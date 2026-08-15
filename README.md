@@ -120,7 +120,7 @@ To completely clean up and remove resources created by the CLI:
 python cli.py ec2-ops delete --instance-id <INSTANCE_ID>
 
 - Empty and delete S3 buckets:
-# Remove contents first, then delete the bucket
+** Remove contents first, then delete the bucket **
 python cli.py s3-ops delete --name <BUCKET_NAME>
 
 - Delete DNS records and Hosted Zones:
