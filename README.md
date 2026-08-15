@@ -1,4 +1,3 @@
-# python-final
 # Platform CLI - AWS Management Tool
 
 A comprehensive Python-based Command Line Interface (CLI) tool designed to manage AWS resources (EC2, S3, and Route53) efficiently and securely with strict adherence to tagging conventions and access control.
