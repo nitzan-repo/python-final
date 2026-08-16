@@ -14,7 +14,6 @@ TAG_VALUE = 'platform-cli'
 
 
 def create_bucket(bucket_name, is_public=False):
-    """יוצר S3 Bucket עם הגדרות פרטיות/ציבוריות ותגים"""
     s3_client.create_bucket(Bucket=bucket_name)
     #  Public / Private config
     if not is_public:
