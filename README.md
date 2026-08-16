@@ -170,11 +170,15 @@ The CLI filters and blocks any management or deletion actions on resources that 
 # 🧹 Cleanup Instructions
 To completely clean up and remove resources created by the CLI:
 - Terminate EC2 instances:
+      ```bash
 python cli.py ec2-ops delete --instance-id <INSTANCE_ID>
-
+      ```
 - Empty and delete S3 buckets:
-** Remove contents first, then delete the bucket **
+#**Remove contents first, then delete the bucket **
+      ```bash
 python cli.py s3-ops delete --name <BUCKET_NAME>
-
+      ```
 - Delete DNS records and Hosted Zones:
+      ```bash
 python cli.py route53-ops delete-zone --zone-id <ZONE_ID>
+      ```
