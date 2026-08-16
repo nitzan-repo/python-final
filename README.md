@@ -1,4 +1,4 @@
-# Platform CLI - AWS Management Tool
+# Platform CLI & UI - AWS Management Tool
 
 A comprehensive Python-based Command Line Interface (CLI) tool designed to manage AWS resources (EC2, S3, and Route53) efficiently and securely with strict adherence to tagging conventions and access control.
 
@@ -10,6 +10,7 @@ This CLI tool allows DevOps engineers and system administrators to provision, up
 * **EC2 Operations:** Create, list, start, stop, update type, and terminate instances (with built-in safety caps).
 * **S3 Operations:** Create private or public buckets (with confirmation prompts for public visibility), upload files, update visibility, list, and delete empty buckets.
 * **Route53 Operations:** Create public or private Hosted Zones and manage DNS records (upsert/delete) with automated ownership tagging and verification.
+* **Web UI Dashboard:** An interactive Streamlit-based graphical user interface that wraps all management operations into easy-to-use forms and screens.
 * **Security & Governance:** Automatically tags all supported resources and restricts modifications or deletions exclusively to resources created by this specific CLI tool.
 
 ---
@@ -18,8 +19,7 @@ This CLI tool allows DevOps engineers and system administrators to provision, up
 
 Before running the tool, ensure you have the following installed and configured:
 1. **Python** (version 3.8 or higher recommended).
-2. **AWS CLI** configured on your machine with appropriate permissions.
-3. **AWS Credentials / Profile:** Ensure your environment has valid AWS credentials set via `aws configure` or environment variables with permissions to manage EC2, S3, Route53, and SSM Parameter Store.
+2. **AWS Credentials / Profile:** Ensure your environment has valid AWS credentials set via `aws configure` or environment variables with permissions to manage EC2, S3, Route53, and SSM Parameter Store.
 
 ---
 
@@ -105,6 +105,17 @@ python cli.py route53-ops delete-record --zone-id Z123456789ABC --name www.nitza
 
 Delete a Hosted Zone (restricted to CLI-created zones):
 python cli.py route53-ops delete-zone --zone-id Z123456789ABC
+
+# 💻 Running the UI
+To launch the interactive Streamlit web dashboard:
+
+Ensure all your manager files (ec2_manager.py, s3_manager.py, route53_manager.py) and the UI file (app.py) are in the same directory.
+
+Run the following command in your terminal:
+streamlit run app.py
+
+Open the local URL provided in your terminal (usually http://localhost:8501) in your web browser.
+
 
 # 🏷️ Tagging Convention
 To maintain strict governance, resource isolation, and safe cleanup protocols, all resources provisioned through this platform automatically include consistent tagging:
