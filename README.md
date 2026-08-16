@@ -27,7 +27,7 @@ Before running the tool, ensure you have the following installed and configured:
 
 1. Clone the repository and navigate to the project directory:
    ```bash
-cd python-final
+   cd python-final
 
 **Create and activate a virtual environment (optional but recommended):**
 create:
