@@ -1,17 +1,17 @@
 # Platform CLI & UI - AWS Management Tool
 
-A comprehensive Python-based Command Line Interface (CLI) tool designed to manage AWS resources (EC2, S3, and Route53) efficiently and securely with strict adherence to tagging conventions and access control.
+A comprehensive Python-based Command Line Interface (CLI) tool designed to manage AWS resources (EC2, S3, and Route53).
 
 ---
 
 ## 🚀 What the Tool Does
 
-This CLI tool allows DevOps engineers and system administrators to provision, update, list, and delete AWS resources directly from the terminal. Key features include:
+This CLI & UI tool allows to provision, update, list, and delete AWS resources directly from the terminal or from a user-friendly UI interface. Key features include:
 * **EC2 Operations:** Create, list, start, stop, update type, and terminate instances (with built-in safety caps).
 * **S3 Operations:** Create private or public buckets (with confirmation prompts for public visibility), upload files, update visibility, list, and delete empty buckets.
 * **Route53 Operations:** Create public or private Hosted Zones and manage DNS records (upsert/delete) with automated ownership tagging and verification.
 * **Web UI Dashboard:** An interactive Streamlit-based graphical user interface that wraps all management operations into easy-to-use forms and screens.
-* **Security & Governance:** Automatically tags all supported resources and restricts modifications or deletions exclusively to resources created by this specific CLI tool.
+* **Security:** Automatically tags all supported resources and restricts modifications or deletions exclusively to resources created by this specific CLI tool.
 
 ---
 
@@ -31,15 +31,15 @@ Before running the tool, ensure you have the following installed and configured:
 
 *Create and activate a virtual environment (optional but recommended):
 python -m venv .venv
-# On Windows (PowerShell):
+ On Windows (PowerShell):
 .venv\Scripts\Activate.ps1
-# On macOS/Linux:
+ On macOS/Linux:
 source .venv/bin/activate
 
 2. Install the required dependencies:
 pip install -r requirements.txt
 
-## 📖 Usage Examples
+## 📖 CLI Usage Examples
 # General Help:
 python cli.py --help
 python cli.py ec2-ops --help
