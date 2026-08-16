@@ -33,6 +33,7 @@ Before running the tool, ensure you have the following installed and configured:
 create:
    ```bash
 python -m venv .venv
+```
 
 activate:
 *On Windows (PowerShell):*
