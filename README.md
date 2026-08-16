@@ -51,71 +51,103 @@ activate:
   ```
 ## 📖 CLI Usage Examples
 # General Help:
+```bash
 python cli.py --help
+```
+```bash
 python cli.py ec2-ops --help
+```
+```bash
 python cli.py s3-ops --help
+```
+```bash
 python cli.py route53-ops --help
+```
 
-# EC2 Operations:
-Create an instance (defaults to t3.micro and fetches the latest Ubuntu AMI automatically):
-python cli.py ec2-ops create
+### EC2 Operations:
 
-Create an instance with a specific type:
-python cli.py ec2-ops create --instance-type t2.small
+* Create an instance (defaults to `t3.micro` and fetches the latest Ubuntu AMI automatically):
+    ```bash
+    python cli.py ec2-ops create
+    ```
+* Create an instance with a specific type:
+    ```bash
+    python cli.py ec2-ops create --instance-type t2.small
+    ```
+* List all CLI-created instances:
+    ```bash
+    python cli.py ec2-ops list
+    ```
+* Start an instance:
+    ```bash
+    python cli.py ec2-ops start --instance-id i-0123456789abcdef0
+    ```
+* Stop an instance:
+    ```bash
+    python cli.py ec2-ops stop --instance-id i-0123456789abcdef0
+    ```
+* Update instance type:
+    ```bash
+    python cli.py ec2-ops update --instance-id i-0123456789abcdef0 --instance-type t2.small
+    ```
+* Terminate (delete) an instance:
+    ```bash
+    python cli.py ec2-ops delete --instance-id i-0123456789abcdef0
+    ```
 
-List all CLI-created instances:
-python cli.py ec2-ops list
+### S3 Operations
 
-Start an instance:
-python cli.py ec2-ops start --instance-id i-0123456789abcdef0
+* Create a private bucket:
+    ```bash
+    python cli.py s3-ops create --name my-unique-bucket-123 --visibility private
+    ```
+* Create a public bucket (triggers a confirmation warning):
+    ```bash
+    python cli.py s3-ops create --name my-public-bucket-123 --visibility public
+    ```
+* List CLI-created buckets:
+    ```bash
+    python cli.py s3-ops list
+    ```
+* Upload a file to a bucket:
+    ```bash
+    python cli.py s3-ops upload --bucket my-unique-bucket-123 --file ./test.txt
+    ```
+* Update bucket visibility:
+    ```bash
+    python cli.py s3-ops update --name my-unique-bucket-123 --visibility public
+    ```
+* Delete a bucket (must be empty):
+    ```bash
+    python cli.py s3-ops delete --name my-unique-bucket-123
+    ```
 
-Stop an instance:
-python cli.py ec2-ops stop --instance-id i-0123456789abcdef0
+### Route53 Operations
 
-Update instance type:
-python cli.py ec2-ops update --instance-id i-0123456789abcdef0 --instance-type t2.small
-
-Terminate (delete) an instance:
-python cli.py ec2-ops delete --instance-id i-0123456789abcdef0
-
-# S3 Operations
-Create a private bucket:
-python cli.py s3-ops create --name my-unique-bucket-123 --visibility private
-
-Create a public bucket (triggers a confirmation warning):
-python cli.py s3-ops create --name my-public-bucket-123 --visibility public
-
-List CLI-created buckets:
-python cli.py s3-ops list
-
-Upload a file to a bucket:
-python cli.py s3-ops upload --bucket my-unique-bucket-123 --file ./test.txt
-
-Update bucket visibility:
-python cli.py s3-ops update --name my-unique-bucket-123 --visibility public
-
-Delete a bucket (must be empty):
-python cli.py s3-ops delete --name my-unique-bucket-123
-
-# Route53 Operations
-Create a public Hosted Zone:
-python cli.py route53-ops create-zone --name nitzan.local.
-
-Create a private Hosted Zone (associated with a specific VPC):
-python cli.py route53-ops create-zone --name internal.local. --vpc-id vpc-xxxxxxxxx
-
-List CLI-created Hosted Zones:
-python cli.py route53-ops list-zones
-
-Create or update (Upsert) a DNS record:
-python cli.py route53-ops upsert-record --zone-id Z123456789ABC --name www.nitzan.local. --type A --value 192.0.2.1
-
-Delete a DNS record:
-python cli.py route53-ops delete-record --zone-id Z123456789ABC --name www.nitzan.local. --type A --value 192.0.2.1
-
-Delete a Hosted Zone (restricted to CLI-created zones):
-python cli.py route53-ops delete-zone --zone-id Z123456789ABC
-
+* Create a public Hosted Zone:
+    ```bash
+    python cli.py route53-ops create-zone --name nitzan.local.
+    ```
+* Create a private Hosted Zone (associated with a specific VPC):
+    ```bash
+    python cli.py route53-ops create-zone --name internal.local. --vpc-id vpc-xxxxxxxxx
+    ```
+* List CLI-created Hosted Zones:
+    ```bash
+    python cli.py route53-ops list-zones
+    ```
+* Create or update (Upsert) a DNS record:
+    ```bash
+    python cli.py route53-ops upsert-record --zone-id Z123456789ABC --name www.nitzan.local. --type A --value 192.0.2.1
+    ```
+* Delete a DNS record:
+    ```bash
+    python cli.py route53-ops delete-record --zone-id Z123456789ABC --name www.nitzan.local. --type A --value 192.0.2.1
+    ```
+* Delete a Hosted Zone (restricted to CLI-created zones):
+    ```bash
+    python cli.py route53-ops delete-zone --zone-id Z123456789ABC
+    ```
 # 💻 Running the UI
 To launch the interactive Streamlit web dashboard:
 
