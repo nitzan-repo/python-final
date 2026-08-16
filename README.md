@@ -154,7 +154,7 @@ python cli.py route53-ops --help
 Ensure all your manager files (ec2_manager.py, s3_manager.py, route53_manager.py) and the UI file (app.py) are in the same directory.
 
 Run the following command in your terminal:
-    ```bash
+    ```
 streamlit run app.py
     ```
 Open the local URL provided in your terminal (usually http://localhost:8501) in your web browser.
