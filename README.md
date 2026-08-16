@@ -30,15 +30,20 @@ Before running the tool, ensure you have the following installed and configured:
    cd python-final
 
 **Create and activate a virtual environment (optional but recommended):**
-create: python -m venv .venv
+create:
+```bash
+python -m venv .venv
 activate:
 *On Windows (PowerShell):*
+```bash
 .venv\Scripts\Activate.ps1
 *On macOS/Linux:*
+```bash
 source .venv/bin/activate
 
 2. Install the required dependencies:
-**pip install -r requirements.txt**
+```bash
+pip install -r requirements.txt
 
 ## 📖 CLI Usage Examples
 # General Help:
