@@ -1,0 +1,81 @@
+# ==========================================
+# פקודות עזרה (Help)
+# ==========================================
+python cli.py --help
+python cli.py ec2-ops --help
+python cli.py s3-ops --help
+python cli.py route53-ops --help
+
+
+# ==========================================
+# פקודות ניהול EC2
+# ==========================================
+# יצירת מכונה חדשה (עם ברירת מחדל t3.micro וזיהוי AMI אוטומטי)
+python cli.py ec2-ops create
+
+# יצירת מכונה עם סוג מוגדר מראש
+python cli.py ec2-ops create --instance-type t2.small
+
+# הצגת רשימת כל המכונות שנוצרו על ידי ה-CLI
+python cli.py ec2-ops list
+
+# הפעלת מכונה לפי מזהה
+python cli.py ec2-ops start --instance-id i-0123456789abcdef0
+
+# עצירת מכונה לפי מזהה
+python cli.py ec2-ops stop --instance-id i-0123456789abcdef0
+
+# עדכון סוג המכונה (Instance Type)
+python cli.py ec2-ops update --instance-id i-0123456789abcdef0 --instance-type t2.small
+
+# מחיקה (Termination) של מכונה
+python cli.py ec2-ops delete --instance-id i-0123456789abcdef0
+
+
+# ==========================================
+# פקודות ניהול S3
+# ==========================================
+# יצירת Bucket פרטי
+python cli.py s3-ops create --name my-private-bucket-123 --visibility private
+
+# יצירת Bucket ציבורי (יקפיץ אזהרה ואישור yes/no)
+python cli.py s3-ops create --name my-public-bucket-123 --visibility public
+
+# הצגת רשימת ה-Buckets שנוצרו על ידי ה-CLI
+python cli.py s3-ops list
+
+# העלאת קובץ ל-Bucket מוגדר
+python cli.py s3-ops upload --bucket my-bucket-123 --file ./test.txt
+
+# מחיקת קובץ ל-Bucket מוגדר
+python cli.py s3-ops delete-file --bucket my-bucket-123 --file test.txt
+
+python cli.py s3-ops list-files --bucket test-app-nitzan
+
+# עדכון נגישות (Visibility) של Bucket קיים
+python cli.py s3-ops update --name my-unique-bucket-nitzan-123 --visibility public
+
+# מחיקת Bucket (חייב להיות ריק)
+python cli.py s3-ops delete --name my-unique-bucket-nitzan-123
+
+
+# ==========================================
+# פקודות ניהול Route53 (DNS)
+# ==========================================
+# יצירת Hosted Zone ציבורי
+python cli.py route53-ops create-zone --name nitzan.local.
+
+# יצירת Hosted Zone פרטי (משויך ל-VPC)
+python cli.py route53-ops create-zone --name internal.local. --vpc-id vpc-xxxxxxxxx
+
+# הצגת רשימת ה-Hosted Zones שנוצרו על ידי ה-CLI
+python cli.py route53-ops list-zones
+
+# יצירה או עדכון (Upsert) של רשומת DNS בתוך ה-Zone
+python cli.py route53-ops upsert-record --zone-id Z123456789ABC --name www.nitzan.local. --type A --value 192.0.2.1
+
+# מחיקת רשומת DNS מתוך ה-Zone
+python cli.py route53-ops delete-record --zone-id Z123456789ABC --name www.nitzan.local. --type A --value 192.0.2.1
+
+# מחיקת Hosted Zone (מותנה בבדיקת תגיות ה-CLI)
+python cli.py route53-ops delete-zone --zone-id Z123456789ABC
